@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <title>This is Andrew's first web page!</title>
+  <link rel="stylesheet" href="style05.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+<body>
+  <!-- This is my js 01 assignment -->
+  <h1> About Me </h1>
+  <h3> Picture of Me! </h3>
+ <div id="andrew"> 
+   <img id="andrew-img" src="andrew.jpeg"> 
+   <br>
+   This is my face.
+ </div>
+  <h3 style="font-family: courier; background-color: #ffddcc"> Quick Bio</h3>
+  <!-- This is a quick bio about myself and who I am. -->
+ <button id="job">
+   Click here to find out!
+ </button>
+  <p class="data" hidden id="job">
+    My name is Andrew Cheng and I am a sophomore at Dartmouth College.
+  </p>
+
+  <script>
+    $("button#job").click(
+      function() {
+        $("p#job").fadeToggle("slow");
+      }
+      )
+  </script>
+
+  <h3 style="font-family: perpetua; background-color: red"> Where I'm From </h3>
+  <button id="place">
+    Click here to find out!
+  </button>
+<p class="data" hidden id="place"> I was born in California, but have essentially lived my entire life in <em> Plano, TX </em>. </p>
+<script>
+    $("button#place").click(
+      function() {
+        $("p#place").show();
+      }
+      )
+  </script>
+  <h3> Favorite Food?</h3>
+  
+  <p> It's hard to pick for me, but I'll take <strong> sushi </strong> any day of the week! </p>
+  <h3> Favorite Pet? </h3>
+  <img src="cat.jpeg" width="400" height="400">
+<h3> Favorite Sports </h3>
+   <table>
+     <tr> 
+       <th colspan="3" class="data"> Sports I've Played 
+       </th>
+     </tr>
+    <tr>
+      <th> Sport</th>
+      <th> Time Played</th>
+      <th> Rating Out of 10</th>
+    </tr>
+     <tr>
+       <td> Tennis</td>
+       <td> 7 years</td>
+       <td> 9/10 </td>
+     </tr>
+     <tr>
+       <td> Ice Skating</td>
+       <td> 4 years</td>
+       <td> 8/10 </td>
+     </tr>
+     <tr>
+       <td> Paddleboarding</td>
+       <td> 2 years</td>
+       <td> 7/10 </td>
+     </tr>
+     <tr>
+       <td> Squash</td>
+       <td> 1 year</td>
+       <td> 7/10 </td>
+     </tr>
+     <tr>
+       <td> Golf</td>
+       <td> 1/2 year</td>
+       <td> 4/10 </td>
+  
+  </table>
+
+  <h3> Top 5 Places I Want to Visit </h3>
+  <ol>
+    <li> Japan </li>
+    <li> Bali </li>
+    <li> Spain </li>
+    <li> Jamaica </li>
+    <li> Bahamas </li>
+  </ol>
+<!-- This is a link to my LinkedIn page to learn more about me. -->
+  <h3> Want to learn more about me?</h3>
+  <a href="https://www.linkedin.com/in/andrew-j-cheng/">Visit my LinkedIn!</a>
+
+  <h3> Want to check out previous versions of this site? </h3>
+  <a href="lab02.html"> This is a link to my previous lab file. </a>
+ 
+  
+</body>
+</html>
