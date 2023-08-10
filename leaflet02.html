@@ -14,6 +14,7 @@
       html, body { height: 100%; margin: 0; padding: 0; }
     </style>
     <script src="NH_Designated_Rivers_24K.geojson"> </script>
+    <script src="Politics.geojson"> </script>
       
     <script>
       var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
@@ -33,6 +34,15 @@
                    opacity: .5,
                    onEachFeature: function(feature, layer) {
                         layer.bindPopup("<b> River Length: " + feature.properties.LENGTH + "</b>")
+          
+                   }
+                  }).addTo(map);
+        L.geoJson(politics_geojson,
+                  {color: "red",
+                   weight: 5,
+                   opacity: .5,
+                   onEachFeature: function(feature, layer) {
+                        layer.bindPopup("<b> Political District Name: " + feature.properties.NAME + "</b>")
           
                    }
                   }).addTo(map);
