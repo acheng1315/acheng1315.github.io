@@ -17,6 +17,7 @@
     <script src="Politics.geojson"> </script>
       
     <script>
+      var riversLayer;
       var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
                                           {maxZoom: 19,
                                            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href= "http://hot.osm.org">HOT OSM</a>'
@@ -28,7 +29,7 @@
           zoom: 15,
           layers: [OpenStreetMap_HOT]
         });
-        L.geoJson(rivers_geojson,
+        riversLayer = L.geoJson(rivers_geojson,
                   {color: "blue",
                    weight: 5,
                    opacity: .5,
