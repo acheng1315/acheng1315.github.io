@@ -30,9 +30,9 @@
         L.geoJson(rivers_geojson,
                   {color: "blue",
                    weight: 5,
-                   opacity: .5
+                   opacity: .5,
                    onEachFeature: function(feature, layer) {
-                        layer.bindPopup("<b> Trail Name: " + feature.properties.River_Name + "</b>")
+                        layer.bindPopup("<b> River Length: " + feature.properties.LENGTH + "</b>")
           
                    }
                   }).addTo(map);
