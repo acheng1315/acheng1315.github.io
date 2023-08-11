@@ -34,7 +34,7 @@
                    weight: 5,
                    opacity: .5,
                    onEachFeature: function(feature, layer) {
-                        layer.bindPopup("<b> River Length: " + feature.properties.LENGTH + "</b>")
+                        layer.bindPopup("<b> River Name: " + feature.properties.River_Name + "</b><be>" + "Length: " + feature.properties.LENGTH + "<br>" + "Class: " + feature.properties.Class);
           
                    }
                   }).addTo(map);
