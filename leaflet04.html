@@ -15,7 +15,6 @@
       #buttons { padding: 10px; background: #f3d1c9; }
     </style>
    
-    <script src="Politics.geojson"> </script>
       
     <script>
       var riversLayer;
@@ -80,15 +79,7 @@
 	        })
 		
 	});
-        L.geoJson(politics_geojson,
-	                  {color: "red",
-	                   weight: 5,
-	                   opacity: .5,
-	                   onEachFeature: function(feature, layer) {
-	                        layer.bindPopup("<b> Political District Name: " + feature.properties.NAME + "</b>")
-	          
-	                   }
-	                  }).addTo(map);
+       
       });
     </script>
   </head>
