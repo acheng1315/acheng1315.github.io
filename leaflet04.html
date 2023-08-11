@@ -14,7 +14,7 @@
       html, body { height: 100%; margin: 0; padding: 0; }
       #buttons { padding: 10px, background: #f3d1c9; }
     </style>
-    <script src="NH_Designated_Rivers_24K.geojson"> </script>
+   
     <script src="Politics.geojson"> </script>
       
     <script>
@@ -50,6 +50,14 @@
         });
         var baseMaps = {"OSM" : OpenStreetMap_HOT, "USGS" : USGS };
         L.control.layers(baseMaps).addTo(map);
+	var response = $.ajax({
+		URL: "NH_Rivers_2.geojson",
+		dataType: "json",
+		success: console.log("trails data loaded!"),
+		error: function(xhr) {
+			alert(xhr.statusText);
+		}
+	});
         riversLayer = L.geoJson(rivers_geojson,
                   {style: lineSymbology,
                    onEachFeature: function(feature, layer) {
