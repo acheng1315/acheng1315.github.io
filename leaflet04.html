@@ -58,32 +58,37 @@
 			alert(xhr.statusText);
 		}
 	});
-        riversLayer = L.geoJson(rivers_geojson,
+	$.when(response).done(function() {
+		riversLayer = L.geoJson(response.responseJSON,
                   {style: lineSymbology,
                    onEachFeature: function(feature, layer) {
                         layer.bindPopup("<b> River Name: " + feature.properties.River_Name + "</b><br>" + "Length: " + feature.properties.LENGTH + "<br>" + "Class: " + feature.properties.Class);
           
                    }
-                  });
-        $("#toggleRivers").click( function() {
-          if(riversVisible) {
-            riversVisible = false;
-            riversLayer.removeFrom(map);
-          } else {
-            riversVisible = true;
-            riversLayer.addTo(map);
-	  }
-        })
-        
-        L.geoJson(politics_geojson,
-                  {color: "red",
-                   weight: 5,
-                   opacity: .5,
-                   onEachFeature: function(feature, layer) {
-                        layer.bindPopup("<b> Political District Name: " + feature.properties.NAME + "</b>")
-          
-                   }
                   }).addTo(map);
+		$("#toggleRivers").show();
+	        $("#toggleRivers").click( function() {
+	          if(riversVisible) {
+	            riversVisible = false;
+	            riversLayer.removeFrom(map);
+	          } else {
+	            riversVisible = true;
+	            riversLayer.addTo(map);
+		  }
+	        })
+        
+	        L.geoJson(politics_geojson,
+	                  {color: "red",
+	                   weight: 5,
+	                   opacity: .5,
+	                   onEachFeature: function(feature, layer) {
+	                        layer.bindPopup("<b> Political District Name: " + feature.properties.NAME + "</b>")
+	          
+	                   }
+	                  }).addTo(map);
+		
+		});
+        
       });
     </script>
   </head>
@@ -92,7 +97,7 @@
     <h1>Hello Campus!</h1>
     <div id="map"></div>
     <div id="buttons">
-      <button id="toggleRivers">Toggle the rivers layer.</button>
+      <button id="toggleRivers" hidden>Toggle the rivers layer.</button>
   </body>
   
 </html>
