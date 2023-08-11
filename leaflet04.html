@@ -76,8 +76,9 @@
 	            riversLayer.addTo(map);
 		  }
 	        })
-        
-	        L.geoJson(politics_geojson,
+		
+	});
+        L.geoJson(politics_geojson,
 	                  {color: "red",
 	                   weight: 5,
 	                   opacity: .5,
@@ -86,9 +87,6 @@
 	          
 	                   }
 	                  }).addTo(map);
-		
-		});
-        
       });
     </script>
   </head>
