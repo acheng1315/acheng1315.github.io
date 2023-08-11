@@ -12,7 +12,7 @@
     <style>
       #map { height: 400px; width: 500px; }
       html, body { height: 100%; margin: 0; padding: 0; }
-      #buttons { padding: 10px, background: #f3d1c9; }
+      #buttons { padding: 10px; background: #f3d1c9; }
     </style>
    
     <script src="Politics.geojson"> </script>
@@ -46,12 +46,14 @@
         var map = L.map('map', {
           center: [43.7034, -72.2887],
           zoom: 15
-        
+        	
         });
+	OpenStreetMap_HOT.addTo(map);
+
         var baseMaps = {"OSM" : OpenStreetMap_HOT, "USGS" : USGS };
         L.control.layers(baseMaps).addTo(map);
 	var response = $.ajax({
-		URL: "NH_Rivers_2.geojson",
+		url: "NH_Rivers_2.geojson",
 		dataType: "json",
 		success: console.log("trails data loaded!"),
 		error: function(xhr) {
@@ -78,7 +80,7 @@
 	        })
 		
 	});
-        L.geoJson(politics_geojson,
+        L.geoJson(Politics_geojson,
 	                  {color: "red",
 	                   weight: 5,
 	                   opacity: .5,
@@ -96,6 +98,7 @@
     <div id="map"></div>
     <div id="buttons">
       <button id="toggleRivers" hidden>Toggle the rivers layer.</button>
+    </div>
   </body>
   
 </html>
