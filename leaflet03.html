@@ -10,7 +10,7 @@
    crossorigin=""></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
-      #map { height: 400px; width: 700px; }
+      #map { height: 400px; width: 500px; }
       html, body { height: 100%; margin: 0; padding: 0; }
       #buttons { padding: 10px, background: #f3d1c9; }
     </style>
@@ -24,6 +24,11 @@
                                           {maxZoom: 19,
                                            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href= "http://hot.osm.org">HOT OSM</a>'
                                           });
+      var USGS = L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}', 
+                                       {maxZoom: 20,
+	                                      attribution: 'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
+                                      });
+	
       function lineSymbology(feature) {
         var length = feature.properties.LENGTH;
         var lineWidth = 2;
@@ -40,9 +45,11 @@
       $(document).ready(function() {
         var map = L.map('map', {
           center: [43.7034, -72.2887],
-          zoom: 15,
-          layers: [OpenStreetMap_HOT]
+          zoom: 15
+        
         });
+        var baseMaps = {"OSM" : OpenStreetMap_HOT, "USGS" : USGS }
+        L.control.layers(baseMaps.addTo(map));
         riversLayer = L.geoJson(rivers_geojson,
                   {style: lineSymbology,
                    onEachFeature: function(feature, layer) {
