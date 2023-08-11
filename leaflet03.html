@@ -12,12 +12,14 @@
     <style>
       #map { height: 400px; width: 700px; }
       html, body { height: 100%; margin: 0; padding: 0; }
+      #buttons { padding: 10px, background: #f3d1c9; }
     </style>
     <script src="NH_Designated_Rivers_24K.geojson"> </script>
     <script src="Politics.geojson"> </script>
       
     <script>
       var riversLayer;
+      var riversVisible = false;
       var OpenStreetMap_HOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
                                           {maxZoom: 19,
                                            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href= "http://hot.osm.org">HOT OSM</a>'
@@ -44,10 +46,19 @@
         riversLayer = L.geoJson(rivers_geojson,
                   {style: lineSymbology,
                    onEachFeature: function(feature, layer) {
-                        layer.bindPopup("<b> River Name: " + feature.properties.River_Name + "</b><be>" + "Length: " + feature.properties.LENGTH + "<br>" + "Class: " + feature.properties.Class);
+                        layer.bindPopup("<b> River Name: " + feature.properties.River_Name + "</b><br>" + "Length: " + feature.properties.LENGTH + "<br>" + "Class: " + feature.properties.Class);
           
                    }
-                  }).addTo(map);
+                  });
+        $("#toggleRivers").click( function() {
+          if(riversVisible) {
+            riversVisible = false;
+            riversLayer.removeFrom(map);
+          } else {
+            riversVisible = true;
+            riversLayer.addTo(map);
+        })
+        
         L.geoJson(politics_geojson,
                   {color: "red",
                    weight: 5,
@@ -64,6 +75,8 @@
   <body>
     <h1>Hello Campus!</h1>
     <div id="map"></div>
+    <div id="buttons">
+      <button id="toggleRivers">Toggle the rivers layer.</button>
   </body>
   
 </html>
