@@ -48,7 +48,7 @@
           zoom: 15
         
         });
-        var baseMaps = {"OSM" : OpenStreetMap_HOT, "USGS" : USGS }
+        var baseMaps = {"OSM" : OpenStreetMap_HOT, "USGS" : USGS };
         L.control.layers(baseMaps.addTo(map));
         riversLayer = L.geoJson(rivers_geojson,
                   {style: lineSymbology,
