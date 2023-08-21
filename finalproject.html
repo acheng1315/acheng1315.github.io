@@ -13,7 +13,7 @@
     <style>
       #map { height: 400px; width: 500px; }
       html, body { height: 100%; margin: 0; padding: 0; }
-      #buttons { padding: 10px; background: #f3d1c9; }
+/*       #buttons { padding: 10px; background: #f3d1c9; } */
     </style>
    
       
@@ -32,18 +32,18 @@
 
 	    
 	    // start of other code
-      function lineSymbology(feature) {
-        var length = feature.properties.LENGTH;
-        var lineWidth = 2;
-        var lineColor = "#a1d76a";
-        if (length > 500 ) { lineColor = "#777777"; lineWidth = 4; }
-        if (length < 200) { lineColor = "#e9a3c9"; lineWidth = 6 }
-        return {
-          color: lineColor,
-          weight: lineWidth,
-          opacity: 1
-        }
-      }
+      // function lineSymbology(feature) {
+      //   var length = feature.properties.LENGTH;
+      //   var lineWidth = 2;
+      //   var lineColor = "#a1d76a";
+      //   if (length > 500 ) { lineColor = "#777777"; lineWidth = 4; }
+      //   if (length < 200) { lineColor = "#e9a3c9"; lineWidth = 6 }
+      //   return {
+      //     color: lineColor,
+      //     weight: lineWidth,
+      //     opacity: 1
+      //   }
+      // }
 
       $(document).ready(function() {
         var map = L.map('map', {
@@ -70,45 +70,45 @@
         var baseMaps = {"OSM" : OpenStreetMap_HOT, "USGS" : USGS };
         L.control.layers(baseMaps).addTo(map);
 	
-	var response = $.ajax({
-		url: "NH_Rivers_2.geojson",
-		dataType: "json",
-		success: console.log("trails data loaded!"),
-		error: function(xhr) {
-			alert(xhr.statusText);
-		}
-	});
-	$.when(response).done(function() {
-		riversLayer = L.geoJson(response.responseJSON,
-                  {style: lineSymbology,
-                   onEachFeature: function(feature, layer) {
-                        layer.bindPopup("<b> River Name: " + feature.properties.River_Name + "</b><br>" + "Length: " + feature.properties.LENGTH + "<br>" + "Class: " + feature.properties.Class);
+	// var response = $.ajax({
+	// 	url: "NH_Rivers_2.geojson",
+	// 	dataType: "json",
+	// 	success: console.log("trails data loaded!"),
+	// 	error: function(xhr) {
+	// 		alert(xhr.statusText);
+	// 	}
+	// });
+	// $.when(response).done(function() {
+	// 	riversLayer = L.geoJson(response.responseJSON,
+ //                  {style: lineSymbology,
+ //                   onEachFeature: function(feature, layer) {
+ //                        layer.bindPopup("<b> River Name: " + feature.properties.River_Name + "</b><br>" + "Length: " + feature.properties.LENGTH + "<br>" + "Class: " + feature.properties.Class);
           
-                   }
-                  }).addTo(map);
-		$("#toggleRivers").show();
-	        $("#toggleRivers").click( function() {
-	          if(riversVisible) {
-	            riversVisible = false;
-	            riversLayer.removeFrom(map);
-	          } else {
-	            riversVisible = true;
-	            riversLayer.addTo(map);
-		  }
-	        })
+ //                   }
+ //                  }).addTo(map);
+	// 	$("#toggleRivers").show();
+	//         $("#toggleRivers").click( function() {
+	//           if(riversVisible) {
+	//             riversVisible = false;
+	//             riversLayer.removeFrom(map);
+	//           } else {
+	//             riversVisible = true;
+	//             riversLayer.addTo(map);
+	// 	  }
+	//         })
 		
-	});
+	// });
        
       });
     </script>
   </head>
   
   <body>
-    <h1>Hello Campus!</h1>
+    <h1>Earthquake Heat Map</h1>
     <div id="map"></div>
-    <div id="buttons">
-      <button id="toggleRivers" hidden>Toggle the rivers layer.</button>
-    </div>
+<!--     <div id="buttons">
+<!--       <button id="toggleRivers" hidden>Toggle the rivers layer.</button> -->
+<!--     </div> -->
   </body>
   
 </html>
