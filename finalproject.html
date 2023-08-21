@@ -51,6 +51,7 @@
 
         var baseMaps = {"OSM" : OpenStreetMap_HOT, "USGS" : USGS };
         L.control.layers(baseMaps).addTo(map);
+	
 	var response = $.ajax({
 		url: "NH_Rivers_2.geojson",
 		dataType: "json",
