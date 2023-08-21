@@ -28,7 +28,7 @@
                                        {maxZoom: 20,
 	                                      attribution: 'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
                                       });
-	fetch('path/to/your/geojson/file.json')
+	fetch('earthquake_data.geojson')
  	 .then(response => response.json())
   	.then(data => {
     		var heatMapPoints = [];
