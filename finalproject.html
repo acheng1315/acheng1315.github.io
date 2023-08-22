@@ -11,7 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src='leaflet-heat.js'></script>
     <style>
-      #map { height: 400px; width: 500px; }
+      #map { height: 500px; width: 600px; }
       html, body { height: 100%; margin: 0; padding: 0; }
     </style>
    
@@ -46,6 +46,7 @@
 	    var heat = L.heatLayer(heatMapPoints, {
 	      radius: 20,
 	      minOpacity: 0.4,
+		blur: 20,
 	      gradient: {
 		  '0': 'Navy', '0.25': 'Navy',
 		  '0.26': 'Green',
