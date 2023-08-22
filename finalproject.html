@@ -34,7 +34,7 @@
           zoom: 3
         
         });
-	OpenStreetMap_HOT.addTo(map);
+	USGS.addTo(map);
 	fetch('earthquake_data.geojson')
  	 .then(response => response.json())
   	.then(data => {
