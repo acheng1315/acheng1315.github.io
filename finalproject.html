@@ -47,8 +47,8 @@
 
       $(document).ready(function() {
         var map = L.map('map', {
-          center: [49.25077560316286, -123.08944702148438],
-          zoom: 8
+          center: [120, 120],
+          zoom: 3
         
         });
 	OpenStreetMap_HOT.addTo(map);
@@ -61,7 +61,7 @@
     	});
 
 	    var heat = L.heatLayer(heatMapPoints, {
-	      radius: 25,
+	      radius: 20,
 	      minOpacity: 0.4,
 	      gradient: {
 		  '0': 'Navy', '0.25': 'Navy',
